@@ -8,10 +8,11 @@ import HeroImage from "../../../public/images/Rectangle 161124256.png";
 
 export default function Hero() {
   return (
-    <section className="relative  from-white ">
-      <div className="    py-5 grid grid-cols-1 lg:grid-cols-2 items-center place-content-between">
+    <section className="relative ">
+      {/* overflow-hidden to contain gradient */}
+      <div className="py-5 grid grid-cols-1 lg:grid-cols-2 items-center place-content-between relative ">
         {/*---------------------------- Left Content --------------------------------*/}
-        <div className="text-center lg:text-left relative ">
+        <div className="text-center lg:text-left relative">
           <h1 className="text-[40px] md:text-[60px] font-extrabold text-[#212B36] leading-[62px] tracking-wide relative inline-block">
             All Your Jobs <br />
             <Image
@@ -23,7 +24,6 @@ export default function Hero() {
             />
             <span className="relative inline-block">
               One Smart App
-              {/* Decorative PNG under text */}
               <Image
                 src={UnderLine}
                 alt="underline"
@@ -40,7 +40,6 @@ export default function Hero() {
             app.
           </p>
 
-          {/* ---------------------- Store Buttons ---------------------- */}
           <div className="mt-[38px] flex justify-center lg:justify-start gap-4">
             <a
               href="#"
@@ -56,15 +55,18 @@ export default function Hero() {
           </div>
         </div>
 
-        {/*---------------------- Right Image--------------------------- */}
-        <div className="relative w-full max-w-[650px] h-[400px]  md:h-[500px]  lg:h-[600px] flex justify-center lg:justify-end">
+        {/*---------------------- Right Image---------------------------*/}
+        <div className="relative w-full max-w-[650px] h-[400px] md:h-[500px] lg:h-[600px] flex justify-center lg:justify-end">
           <Image
             src={HeroImage}
             alt="App Preview"
             fill
-            className="object-fill drop-shadow-2xl"
+            className="object-cover "
             priority
           />
+
+          {/* Gradient on top of image */}
+          <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#FFFFFF] via-white/50 via-70% to-transparent pointer-events-none"></div>
         </div>
       </div>
     </section>
