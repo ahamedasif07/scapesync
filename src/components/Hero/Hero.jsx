@@ -20,7 +20,7 @@ export default function Hero() {
               alt="underline"
               width={100}
               height={70}
-              className="absolute right-[170px] -top-[40px] -z-10"
+              className="absolute  -z-10"
             />
             <span className="relative inline-block">
               One Smart App
@@ -56,12 +56,12 @@ export default function Hero() {
         </div>
 
         {/*---------------------- Right Image---------------------------*/}
-        <div className="relative w-full max-w-[650px] h-[400px] md:h-[500px] lg:h-[600px] flex justify-center lg:justify-end">
+        <div className="relative w-full my-[30px] py-6 lg:my-0 max-w-[650px] h-[400px] md:h-[500px] lg:h-[600px] flex justify-center lg:justify-end">
           <Image
             src={HeroImage}
             alt="App Preview"
             fill
-            className="object-cover "
+            className="object-fill "
             priority
           />
 

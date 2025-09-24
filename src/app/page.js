@@ -1,5 +1,6 @@
 import FeaturesSection from "@/components/FeturesSection/FetureSection";
 import Hero from "@/components/Hero/Hero";
+import ServicesOverview from "@/components/ServicesOverview/ServicesOverview";
 import React from "react";
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     <div className="px-[15px] py-[10px] sm:px-[80px] md:px-[120px] md:py-[19px] sm:py-[15px]">
       <Hero />
       <FeaturesSection />
+      <ServicesOverview />
     </div>
   );
 };
