@@ -2,6 +2,8 @@
 import Image from "next/image";
 import underlinePng from "../../../public/images/Frame 2147227474.png";
 import PhoneOne from "../../../public/images/Rectangle 161124259 (1).png";
+import PhoneTwo from "../../../public/images/Group 15349.png";
+import PhoneTheree from "../../../public/images/Rectangle 161124259 (2).png";
 
 export default function ServicesOverview() {
   return (
@@ -25,6 +27,7 @@ export default function ServicesOverview() {
       </div>
       {/*-------------------------- contents ---------------------------*/}
       <div className="py-22 ">
+        {/*-------------------------- content one------------------------ */}
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
           {/*----------------- Right Image ------------------------*/}
           <div className="flex relative justify-center lg:justify-end order-1 md:order-2">
@@ -46,10 +49,10 @@ export default function ServicesOverview() {
 
             {/* Heading & Paragraph */}
             <div>
-              <h3 className="text-lg md:text-xl font-semibold text-gray-900">
+              <h3 className="text-lg md:text-xl font-semibold text[#0F172A] text-[24px]">
                 Book services, track progress and stay updated
               </h3>
-              <p className="text-gray-600 mt-2 max-w-md mx-auto md:mx-0">
+              <p className="text-[#637381] text-[18px] mt-2 max-w-md mx-auto md:mx-0">
                 Easily schedule appointments, get real-time updates, and enjoy a
                 smooth, transparent service experience.
               </p>
@@ -68,6 +71,102 @@ export default function ServicesOverview() {
               <li className="flex items-center gap-2">
                 <span className="h-[18px]  md:w-[3px]   bg-green-400 rounded-md"></span>
                 Schedule appointments at your convenience
+              </li>
+            </ul>
+          </div>
+        </div>
+        {/*-------------------------- content two------------------------ */}
+        <div className="max-w-7xl mx-auto grid place-content-between grid-cols-1 py-5 md:grid-cols-2 items-center gap-12">
+          {/*----------------- Right Image ------------------------*/}
+          <div className="flex relative justify-center lg:justify-end order-1 md:order-2">
+            <Image
+              src={PhoneTwo}
+              alt="App Mockup"
+              className="w-[280px] md:w-[340px] lg:w-[550px] h-[300px] md:h-[450px]"
+            />
+            {/* Gradient on top of image */}
+            <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white via-white/50 to-transparent pointer-events-none"></div>
+          </div>
+
+          {/* ---------------------Left Content -------------------------*/}
+          <div className="space-y-6 text-center md:text-left order-1 md:order-2">
+            {/* Badge */}
+            <div className="border-[2px] border-green-600 inline-block rounded-full px-3 py-1 text-sm md:text-base text-green-700 font-medium">
+              Business Owners
+            </div>
+
+            {/* Heading & Paragraph */}
+            <div>
+              <h3 className="text-lg md:text-xl font-semibold text[#0F172A] text-[24px]">
+                Assign jobs, monitor performance, and streamline operations.
+              </h3>
+              <p className="text-[#637381] text-[18px] mt-2 max-w-md mx-auto md:mx-0">
+                Gain full control of your workforce with real-time tracking,
+                smart scheduling, and service management in one app.
+              </p>
+            </div>
+
+            {/* Feature List */}
+            <ul className="space-y-2 text-gray-800 flex flex-col md:items-start items-center  font-medium">
+              <li className="flex items-center gap-2">
+                <span className="h-[18px]  md:w-[3px]  bg-green-600 rounded-md"></span>
+                Assign jobs to the right team member
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="h-[18px]  md:w-[3px]  bg-green-500 rounded-md"></span>
+                Monitor performance in real time
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="h-[18px]  md:w-[3px]   bg-green-400 rounded-md"></span>
+                Manage clients and services seamlessly
+              </li>
+            </ul>
+          </div>
+        </div>
+        {/*-------------------------- content theree------------------------ */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 py-5 items-center gap-12">
+          {/*----------------- Right Image ------------------------*/}
+          <div className="flex relative justify-center lg:justify-end order-1 md:order-2">
+            <Image
+              src={PhoneTheree}
+              alt="App Mockup"
+              className="w-[280px] md:w-[340px] lg:w-[550px] h-[300px] md:h-[450px]"
+            />
+            {/* Gradient on top of image */}
+            <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white via-white/50 to-transparent pointer-events-none"></div>
+          </div>
+
+          {/* ---------------------Left Content -------------------------*/}
+          <div className="space-y-6 text-center md:text-left order-2 md:order-1">
+            {/* Badge */}
+            <div className="border-[2px] border-green-600 inline-block rounded-full px-3 py-1 text-sm md:text-base text-green-700 font-medium">
+              Employees
+            </div>
+
+            {/* Heading & Paragraph */}
+            <div>
+              <h3 className="text-lg md:text-xl font-semibold text[#0F172A] text-[24px]">
+                See tasks, track time, and navigate routes with ease.
+              </h3>
+              <p className="text-[#637381] text-[18px] mt-2 max-w-md mx-auto md:mx-0">
+                Everything you need to manage your workday from job assignments
+                to optimized routes and time logging.
+              </p>
+            </div>
+
+            {/* Feature List */}
+            <ul className="space-y-2 text-gray-800 flex flex-col md:items-start items-center  font-medium">
+              <li className="flex items-center gap-2">
+                <span className="h-[18px]  md:w-[3px]  bg-green-600 rounded-md"></span>
+                Assign jobs to the right team member
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="h-[18px]  md:w-[3px]  bg-green-500 rounded-md"></span>
+                Monitor performance in real time
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="h-[18px]  md:w-[3px]   bg-green-400 rounded-md"></span>
+                Manage clients and services seamlessly
               </li>
             </ul>
           </div>
