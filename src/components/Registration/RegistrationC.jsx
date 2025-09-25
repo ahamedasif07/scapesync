@@ -5,7 +5,6 @@ import React, { useState } from "react";
 
 export default function RegistrationC() {
   const router = useRouter();
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,43 +17,42 @@ export default function RegistrationC() {
     e.preventDefault();
     setError("");
 
+    // Validation
     if (!firstName || !lastName || !email || !password || !confirmPassword) {
       setError("Fill up all fields properly");
       return;
     }
 
-    // Email format validation
+    const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(trimmedEmail)) {
       setError("Invalid email address");
       return;
     }
 
-    // Password length
-    if (password.trim().length < 6) {
+    if (trimmedPassword.length < 6) {
       setError("Password must be at least 6 characters");
       return;
     }
-    // Password match
-    if (password.trim() !== confirmPassword.trim()) {
+
+    if (trimmedPassword !== confirmPassword.trim()) {
       setError("Passwords do not match");
       return;
     }
 
     try {
       setLoading(true);
-
       const res = await fetch("https://apitest.softvencefsd.xyz/api/register", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           first_name: firstName,
           last_name: lastName,
-          email,
-          password,
-          password_confirmation: confirmPassword,
+          email: trimmedEmail,
+          password: trimmedPassword,
+          password_confirmation: confirmPassword.trim(),
         }),
       });
 
@@ -62,11 +60,10 @@ export default function RegistrationC() {
       console.log(result);
 
       if (result.status) {
-        alert("Registration Successful!");
+        // alert("Registration Successful!");
         router.push("/login");
       } else {
         if (result.errors) {
-          // Join all API error messages
           const messages = Object.values(result.errors).flat().join(" ");
           setError(messages);
         } else {
