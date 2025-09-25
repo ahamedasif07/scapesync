@@ -61,7 +61,7 @@ export default function RegistrationC() {
 
       if (result.status) {
         // alert("Registration Successful!");
-        router.push("/login");
+        router.push("/verifide");
       } else {
         if (result.errors) {
           const messages = Object.values(result.errors).flat().join(" ");

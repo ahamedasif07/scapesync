@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const Verification = ({ email }) => {
-  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
-  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const [otp, setOtp] = useState(Array(6).fill("")); // 6 digit OTP
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // Update OTP digits
   const handleChange = (value, index) => {
@@ -43,29 +45,29 @@ const Verification = ({ email }) => {
     try {
       setLoading(true);
 
-      const res = await fetch(
-        "https://apitest.softvencefsd.xyz/api/verify-code",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: email, // pass user email from props
-            code: code.trim(),
-          }),
-        }
-      );
+      const url = "https://apitest.softvencefsd.xyz/api/verify_otp"; // ✅ full URL
+      console.log("Calling verify API:", url);
+
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email, // pass user email from props
+          code: code.trim(),
+        }),
+      });
 
       const result = await res.json();
-      console.log(result);
+      console.log("Verify response:", result);
 
-      if (result.status) {
+      if (result.status === true || result.success === true) {
         alert("Email verified successfully!");
-        window.location.href = "/login";
+        router.push("/login"); // ✅ Next.js redirect
       } else {
         setError(result.message || "Invalid code, try again");
       }
     } catch (err) {
-      console.error(err);
+      console.error("Verify error:", err);
       setError("Server error");
     } finally {
       setLoading(false);
