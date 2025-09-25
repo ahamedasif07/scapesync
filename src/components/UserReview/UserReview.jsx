@@ -41,9 +41,9 @@ const testimonials = [
 
 export default function UserReview() {
   return (
-    <section className="relative pb-16 bg-[#FDFFFD] bg-no-repeat bg-cover bg-center">
+    <section className="relative pb-16 ">
       {/* Optional overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FDFFFD]/80 to-[#FDFFFD]/80"></div>
+      <div className="absolute inset-0"></div>
 
       <div className="relative max-w-screen-2xl mx-auto px-6 text-center">
         {/* Heading */}
@@ -69,7 +69,7 @@ export default function UserReview() {
           >
             {testimonials.map((t, i) => (
               <SwiperSlide key={i}>
-                <div className="p-6 flex flex-col h-[220px] rounded-2xl shadow-lg bg-white transition">
+                <div className="p-6 m-2 flex flex-col h-[220px] rounded-2xl shadow-mg bg-gray-50 transition">
                   <div className="flex items-center space-x-4">
                     <Image
                       src={t.image}

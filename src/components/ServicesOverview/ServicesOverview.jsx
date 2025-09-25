@@ -59,7 +59,10 @@ export default function ServicesOverview() {
         {/*-------------------------- content one------------------------ */}
         <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
           {/*----------------- Right Image ------------------------*/}
-          <div className="flex relative justify-center lg:justify-end order-1 md:order-2">
+          <div
+            data-aos="fade-left"
+            className="flex relative justify-center lg:justify-end order-1 md:order-2"
+          >
             <Image
               src={PhoneOne}
               alt="App Mockup"
@@ -70,7 +73,10 @@ export default function ServicesOverview() {
           </div>
 
           {/* ---------------------Left Content -------------------------*/}
-          <div className="space-y-6 text-center md:text-left order-2 md:order-1">
+          <div
+            data-aos="fade-right"
+            className="space-y-6 text-center md:text-left order-2 md:order-1"
+          >
             {/* Badge */}
             <div className="border-[2px] border-green-600 inline-block rounded-full px-3 py-1 text-sm md:text-base text-green-700 font-medium">
               Users
@@ -107,7 +113,10 @@ export default function ServicesOverview() {
         {/*-------------------------- content two------------------------ */}
         <div className="max-w-screen-2xl mx-auto grid place-content-between grid-cols-1 py-5 md:grid-cols-2 items-center gap-12">
           {/*----------------- Right Image ------------------------*/}
-          <div className="flex relative justify-center lg:justify-end order-1 md:order-2">
+          <div
+            data-aos="fade-left"
+            className="flex relative justify-center lg:justify-end order-1 md:order-2"
+          >
             <Image
               src={PhoneTwo}
               alt="App Mockup"
@@ -118,7 +127,10 @@ export default function ServicesOverview() {
           </div>
 
           {/* ---------------------Left Content -------------------------*/}
-          <div className="space-y-6 text-center md:text-left order-1 md:order-2">
+          <div
+            data-aos="fade-right"
+            className="space-y-6 text-center md:text-left order-1 md:order-2"
+          >
             {/* Badge */}
             <div className="border-[2px] border-green-600 inline-block rounded-full px-3 py-1 text-sm md:text-base text-green-700 font-medium">
               Business Owners
@@ -155,7 +167,10 @@ export default function ServicesOverview() {
         {/*-------------------------- content theree------------------------ */}
         <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 py-5 items-center gap-12">
           {/*----------------- Right Image ------------------------*/}
-          <div className="flex relative justify-center lg:justify-end order-1 md:order-2">
+          <div
+            data-aos="fade-left"
+            className="flex relative justify-center lg:justify-end order-1 md:order-2"
+          >
             <Image
               src={PhoneTheree}
               alt="App Mockup"
@@ -166,7 +181,10 @@ export default function ServicesOverview() {
           </div>
 
           {/* ---------------------Left Content -------------------------*/}
-          <div className="space-y-6 text-center md:text-left order-2 md:order-1">
+          <div
+            data-aos="fade-right"
+            className="space-y-6 text-center md:text-left order-2 md:order-1"
+          >
             {/* Badge */}
             <div className="border-[2px] border-green-600 inline-block rounded-full px-3 py-1 text-sm md:text-base text-green-700 font-medium">
               Employees

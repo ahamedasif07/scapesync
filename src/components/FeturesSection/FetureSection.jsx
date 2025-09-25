@@ -6,25 +6,25 @@ import ShildIcon from "../../../public/images/Frame 781.png";
 export default function FeaturesSection() {
   const features = [
     {
-      icon: CalenderIcon, // replace with your actual path
+      icon: CalenderIcon,
       title: "Easy Service Booking",
       description:
         "Streamlined booking process for clients with service catalogs and availability.",
     },
     {
-      icon: AimIcon, // replace with your actual path
+      icon: AimIcon,
       title: "Real-Time Tracking",
       description:
         "Monitor job progress, employee hours, and project timelines with live updates.",
     },
     {
-      icon: GraphIcon, // replace with your actual path
+      icon: GraphIcon,
       title: "Performance Analytics",
       description:
         "Comprehensive reporting and insights to improve business operations and efficiency.",
     },
     {
-      icon: ShildIcon, // replace with your actual path
+      icon: ShildIcon,
       title: "Secure & Reliable",
       description:
         "Enterprise-grade security with 99.9% uptime guarantee and data protection.",
@@ -36,6 +36,7 @@ export default function FeaturesSection() {
       <div className="max-w-screen-2xl mx-auto  grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         {features.map((feature, index) => (
           <div
+            data-aos="fade-up"
             key={index}
             className="flex flex-col items-start text-left border-r border-gray-200 px-2"
           >

@@ -12,7 +12,7 @@ export default function Hero() {
       {/* overflow-hidden to contain gradient */}
       <div className="py-5 max-w-screen-2xl  mx-auto  grid grid-cols-1 lg:grid-cols-2 items-center place-content-between relative ">
         {/*---------------------------- Left Content --------------------------------*/}
-        <div className="text-center lg:text-left relative">
+        <div data-aos="fade-up" className="text-center lg:text-left relative ">
           <h1 className="text-[40px] md:text-[60px] font-extrabold text-[#212B36] leading-[62px] tracking-wide relative inline-block">
             All Your Jobs <br />
             <Image
@@ -56,7 +56,10 @@ export default function Hero() {
         </div>
 
         {/*---------------------- Right Image---------------------------*/}
-        <div className="relative w-full my-[30px] py-6 lg:my-0 max-w-[650px] h-[400px] md:h-[500px] lg:h-[600px] flex justify-center lg:justify-end">
+        <div
+          data-aos="fade-down"
+          className="relative w-full my-[30px] py-6 lg:my-0 max-w-[650px] h-[400px] md:h-[500px] lg:h-[600px] flex justify-center lg:justify-end"
+        >
           <Image
             src={HeroImage}
             alt="App Preview"
