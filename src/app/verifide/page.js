@@ -1,4 +1,4 @@
-import VerifideC from "@/components/Verifide/VerifideC";
+import VerifideC from "@/components/Verification/Verification";
 import React from "react";
 
 const Verifide = () => {

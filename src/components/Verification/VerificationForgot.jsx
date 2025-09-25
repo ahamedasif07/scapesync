@@ -1,13 +1,29 @@
 "use client";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Verification = ({ email }) => {
+const VerificationForgot = ({ successUser }) => {
   const router = useRouter();
-  const [otp, setOtp] = useState(Array(6).fill("")); // 6 digit OTP
+
+  // Email state
+  const [email, setEmail] = useState("");
+  // OTP state
+  const [otp, setOtp] = useState(Array(6).fill(""));
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Fill email and OTP when successUser is available
+  useEffect(() => {
+    if (successUser?.email) {
+      setEmail(successUser.email);
+    }
+    if (successUser?.otp) {
+      setOtp(successUser.otp.split(""));
+    }
+  }, [successUser]);
 
   // Update OTP digits
   const handleChange = (value, index) => {
@@ -16,9 +32,10 @@ const Verification = ({ email }) => {
       newOtp[index] = value;
       setOtp(newOtp);
 
-      // Auto focus next box
+      // Auto focus next input
       if (value && index < 5) {
-        document.getElementById(`otp-${index + 1}`).focus();
+        const nextInput = document.getElementById(`otp-${index + 1}`);
+        if (nextInput) nextInput.focus();
       }
     }
   };
@@ -26,49 +43,61 @@ const Verification = ({ email }) => {
   // Backspace navigation
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
-      document.getElementById(`otp-${index - 1}`).focus();
+      const prevInput = document.getElementById(`otp-${index - 1}`);
+      if (prevInput) prevInput.focus();
     }
   };
 
-  // Verify API call
+  // Verify OTP API call
   const handleVerify = async (e) => {
-    e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
     setError("");
 
-    const code = otp.join(""); // combine digits
+    if (!email) {
+      toast.error("Email is missing. Please go back and register again.");
+      return;
+    }
+
+    const code = otp.join("");
 
     if (!code.trim()) {
-      setError("Enter the verification code");
+      toast.error("Enter the verification code");
       return;
     }
 
     try {
       setLoading(true);
 
-      const url = "https://apitest.softvencefsd.xyz/api/verify_otp"; // ✅ full URL
-      console.log("Calling verify API:", url);
-
+      const url = "https://apitest.softvencefsd.xyz/api/verify_otp";
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: email, // pass user email from props
-          code: code.trim(),
-        }),
+        body: JSON.stringify({ email, otp: code.trim() }),
       });
 
       const result = await res.json();
       console.log("Verify response:", result);
 
       if (result.status === true || result.success === true) {
-        alert("Email verified successfully!");
-        router.push("/login"); // ✅ Next.js redirect
+        toast.success("Email verified successfully!");
+        // Store reset token for password change
+        if (result.token) {
+          // token string split করো এবং শুধু | এর পরের অংশ নাও
+          const tokenParts = result.token.split("|");
+          const tokenOnly =
+            tokenParts.length > 1 ? tokenParts[1] : tokenParts[0];
+
+          localStorage.setItem("reset_password_token", tokenOnly);
+        }
+        setTimeout(() => {
+          router.push("/password-change");
+        }, 1000);
       } else {
-        setError(result.message || "Invalid code, try again");
+        toast.error(result.message || "Invalid code, try again");
       }
     } catch (err) {
       console.error("Verify error:", err);
-      setError("Server error");
+      toast.error("Server error");
     } finally {
       setLoading(false);
     }
@@ -76,6 +105,7 @@ const Verification = ({ email }) => {
 
   return (
     <div className="flex items-center justify-center min-h-screen ">
+      <ToastContainer position="top-center" />
       <div className="w-full max-w-md p-6 bg-white shadow-md rounded-2xl">
         {/* Back button */}
         <Link href="/registration">
@@ -94,7 +124,7 @@ const Verification = ({ email }) => {
           your email.
         </p>
 
-        {/* OTP Boxes */}
+        {/* OTP Inputs */}
         <div className="flex justify-between mb-6">
           {otp.map((digit, index) => (
             <input
@@ -109,11 +139,6 @@ const Verification = ({ email }) => {
             />
           ))}
         </div>
-
-        {/* Error message */}
-        {error && (
-          <p className="text-red-500 text-sm text-center mb-4">{error}</p>
-        )}
 
         {/* Verify Button */}
         <button
@@ -140,4 +165,4 @@ const Verification = ({ email }) => {
   );
 };
 
-export default Verification;
+export default VerificationForgot;
