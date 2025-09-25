@@ -49,7 +49,7 @@ export default function ServicesOverview() {
           />
         </h2>
 
-        <p className="text-[#637381] tect-[14px] mt-[18px] text-center max-w-[650px] mx-auto ">
+        <p className="text-[#637381] text-[14px] mt-[14px] text-center max-w-[650px] mx-auto ">
           Whether you’re booking services, managing tasks, or running
           operations, we’ve designed the perfect experience for you.
         </p>
