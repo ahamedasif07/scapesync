@@ -1,10 +1,10 @@
 "use client";
-import { convertSegmentPathToStaticExportFilename } from "next/dist/shared/lib/segment-cache/segment-value-encoding";
-import { useRouter } from "next/router";
+
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 export default function RegistrationC() {
-  // const router = useRouter();
+  const router = useRouter();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -13,32 +13,37 @@ export default function RegistrationC() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  console.log({
-    firstName,
-    lastName,
-    email,
-    password,
-    confirmPassword,
-    error,
-    loading,
-  });
-  // sent registration data in api
+
   const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
 
-    // basic validation
     if (!firstName || !lastName || !email || !password || !confirmPassword) {
       setError("Fill up all fields properly");
       return;
     }
-    if (password !== confirmPassword) {
-      setError("Password Not match");
+
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Invalid email address");
+      return;
+    }
+
+    // Password length
+    if (password.trim().length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+    // Password match
+    if (password.trim() !== confirmPassword.trim()) {
+      setError("Passwords do not match");
       return;
     }
 
     try {
       setLoading(true);
+
       const res = await fetch("https://apitest.softvencefsd.xyz/api/register", {
         method: "POST",
         headers: {
@@ -49,16 +54,24 @@ export default function RegistrationC() {
           last_name: lastName,
           email,
           password,
+          password_confirmation: confirmPassword,
         }),
       });
 
       const result = await res.json();
       console.log(result);
+
       if (result.status) {
         alert("Registration Successful!");
         router.push("/login");
       } else {
-        setError(result.message || "Registration failed");
+        if (result.errors) {
+          // Join all API error messages
+          const messages = Object.values(result.errors).flat().join(" ");
+          setError(messages);
+        } else {
+          setError(result.message || "Registration failed");
+        }
       }
     } catch (err) {
       console.error(err);
@@ -71,10 +84,6 @@ export default function RegistrationC() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-none">
-        {/* <div className="flex justify-start mb-6">
-          <img src="/logo.png" alt="ScapeSync" className="h-10" />
-        </div> */}
-
         <h2 className="text-2xl font-semibold text-center">
           Create your Account
         </h2>
@@ -82,8 +91,7 @@ export default function RegistrationC() {
           When sports Meets smart Tech.
         </p>
 
-        {/* -----------------------------------------Form-------------------------------- */}
-        <form className="space-y-4">
+        <form onSubmit={handleRegister} className="space-y-4">
           <div className="flex gap-3">
             <input
               type="text"
@@ -140,23 +148,25 @@ export default function RegistrationC() {
             </span>
           </div>
 
-          {/* Submit Button */}
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition"
+            className={`w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
           >
-            Create Account
+            {loading ? "Creating Account..." : "Create Account"}
           </button>
         </form>
 
-        {/* Divider */}
         <div className="flex items-center my-6">
           <hr className="flex-grow border-gray-300" />
           <span className="mx-2 text-gray-400 text-sm">OR</span>
           <hr className="flex-grow border-gray-300" />
         </div>
 
-        {/* Google Sign-in */}
         <button className="w-full flex items-center justify-center gap-2 border py-2 rounded-md hover:bg-gray-50 transition">
           <img
             src="https://www.svgrepo.com/show/355037/google.svg"
@@ -166,7 +176,6 @@ export default function RegistrationC() {
           Continue with Google
         </button>
 
-        {/* Footer */}
         <p className="text-center text-sm text-gray-600 mt-6">
           Don’t have an account?{" "}
           <a href="#" className="text-green-600 font-medium">
