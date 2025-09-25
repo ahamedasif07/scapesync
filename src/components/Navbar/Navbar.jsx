@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import NavLogo from "../../../public/images/image 7.png";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -12,9 +13,11 @@ const Navbar = () => {
         src={NavLogo}
         alt="nav logo"
       ></Image>
-      <button className="bg-[#3BA334] text-gray-200 px-[26px] py-[10px] font-semibold rounded-[8px] ">
-        Get Started
-      </button>
+      <Link href="/login">
+        <button className="bg-[#3BA334] text-gray-200 px-4 md:px-[26px] py-[7px] md:py-[10px] font-semibold rounded-[8px] ">
+          Get Started
+        </button>
+      </Link>
     </div>
   );
 };
