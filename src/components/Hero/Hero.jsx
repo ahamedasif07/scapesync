@@ -20,7 +20,7 @@ export default function Hero() {
               alt="underline"
               width={100}
               height={70}
-              className="absolute  -z-10"
+              className="absolute bottom-[60px] left-1/2 -ml-[30px] -z-10"
             />
             <span className="relative inline-block">
               One Smart App
@@ -40,7 +40,7 @@ export default function Hero() {
             app.
           </p>
 
-          <div className="mt-[38px] flex justify-center lg:justify-start gap-4">
+          <div className="mt-[45px] flex justify-center lg:justify-start gap-4">
             <a
               href="#"
               className="relative w-[150px] h-[45px] md:w-[310px] md:h-[49px]"

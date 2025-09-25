@@ -4,10 +4,39 @@ import underlinePng from "../../../public/images/Frame 2147227474.png";
 import PhoneOne from "../../../public/images/Rectangle 161124259 (1).png";
 import PhoneTwo from "../../../public/images/Group 15349.png";
 import PhoneTheree from "../../../public/images/Rectangle 161124259 (2).png";
+import victorStat from "../../../public/images/pngstat.png";
+import victorRound from "../../../public/images/pnground.png";
+import victorMini from "../../../public/images/pngmini (2).png";
 
 export default function ServicesOverview() {
   return (
     <section className="relative  w-full bg-white py-16 ">
+      {/*------------------------- green line png------------------------ */}
+
+      <div className="max-w-screen-2xl mx-auto relative">
+        <Image
+          src={victorStat}
+          alt="victor"
+          width={300}
+          height={70}
+          className="absolute  left-1/3 top-[200px]"
+        />
+        <Image
+          src={victorMini}
+          alt="victor"
+          width={200}
+          height={70}
+          className="absolute left-1/8 top-[150px] -translate-x-[70px]"
+        />
+        <Image
+          src={victorRound}
+          alt="victor"
+          width={250}
+          height={70}
+          className="absolute right-1/12 top-[110px] translate-x-[220px]"
+        />
+      </div>
+
       <div className="max-w-screen-2xl mx-auto">
         <h2 className="text-[32px] sm:text-[38px] md:text-[48px] font-bold text-[#212B36] relative text-center max-w-[500px] mx-auto">
           Build for Everyone
