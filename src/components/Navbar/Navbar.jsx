@@ -4,7 +4,7 @@ import NavLogo from "../../../public/images/image 7.png";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center px-[15px] py-[10px] sm:px-[80px] md:px-[120px] md:py-[19px] sm:py-[15px]">
+    <div className="flex justify-between max-w-screen-2xl mx-auto lg:py-[19px] md:py-[17px] py-[15px] items-center ">
       <Image
         className=""
         height={60}

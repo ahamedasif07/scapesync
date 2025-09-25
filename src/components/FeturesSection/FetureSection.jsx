@@ -33,7 +33,7 @@ export default function FeaturesSection() {
 
   return (
     <section className="bg-white py-16 ">
-      <div className="  grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="max-w-screen-2xl mx-auto  grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         {features.map((feature, index) => (
           <div
             key={index}

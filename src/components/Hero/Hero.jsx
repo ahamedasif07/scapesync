@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <section className="relative ">
       {/* overflow-hidden to contain gradient */}
-      <div className="py-5 grid grid-cols-1 lg:grid-cols-2 items-center place-content-between relative ">
+      <div className="py-5 max-w-screen-2xl  mx-auto  grid grid-cols-1 lg:grid-cols-2 items-center place-content-between relative ">
         {/*---------------------------- Left Content --------------------------------*/}
         <div className="text-center lg:text-left relative">
           <h1 className="text-[40px] md:text-[60px] font-extrabold text-[#212B36] leading-[62px] tracking-wide relative inline-block">

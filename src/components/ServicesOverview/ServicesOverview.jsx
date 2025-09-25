@@ -7,8 +7,8 @@ import PhoneTheree from "../../../public/images/Rectangle 161124259 (2).png";
 
 export default function ServicesOverview() {
   return (
-    <section className="relative w-full bg-white py-16 ">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative  w-full bg-white py-16 ">
+      <div className="max-w-screen-2xl mx-auto">
         <h2 className="text-[32px] sm:text-[38px] md:text-[48px] font-bold text-[#212B36] relative text-center max-w-[500px] mx-auto">
           Build for Everyone
           <Image
@@ -28,7 +28,7 @@ export default function ServicesOverview() {
       {/*-------------------------- contents ---------------------------*/}
       <div className="py-22 ">
         {/*-------------------------- content one------------------------ */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
           {/*----------------- Right Image ------------------------*/}
           <div className="flex relative justify-center lg:justify-end order-1 md:order-2">
             <Image
@@ -76,7 +76,7 @@ export default function ServicesOverview() {
           </div>
         </div>
         {/*-------------------------- content two------------------------ */}
-        <div className="max-w-7xl mx-auto grid place-content-between grid-cols-1 py-5 md:grid-cols-2 items-center gap-12">
+        <div className="max-w-screen-2xl mx-auto grid place-content-between grid-cols-1 py-5 md:grid-cols-2 items-center gap-12">
           {/*----------------- Right Image ------------------------*/}
           <div className="flex relative justify-center lg:justify-end order-1 md:order-2">
             <Image
@@ -124,7 +124,7 @@ export default function ServicesOverview() {
           </div>
         </div>
         {/*-------------------------- content theree------------------------ */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 py-5 items-center gap-12">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 py-5 items-center gap-12">
           {/*----------------- Right Image ------------------------*/}
           <div className="flex relative justify-center lg:justify-end order-1 md:order-2">
             <Image
