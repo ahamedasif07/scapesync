@@ -8,10 +8,13 @@ import footerBgImage from "../../../public/images/Mask group.png";
 
 export default function Footer() {
   return (
-    <footer
-      className="bg-[#0D3B2E] pt-[50px] max-w-screen-2xl mx-auto text-white bg-no-repeat bg-cover bg-center "
-      style={{ backgroundImage: `url(${footerBgImage.src})` }}
-    >
+    <footer className="bg-[#0D3B2E] overflow-hidden relative pt-[50px] max-w-screen-2xl mx-auto text-white bg-no-repeat bg-cover bg-center ">
+      <Image
+        src={footerBgImage}
+        objectFit="fill"
+        alt="Download on the App Store"
+        className="object-fill absolute right-0 top-0 "
+      />
       <div className=" overflow-hidden px-[15px] py-[10px] sm:px-[80px] md:px-[120px]   sm:py-[15px]  pb-[50px]  justify-between flex md:flex-row flex-col items-start md:items-center lg:items-start gap-10">
         <div className="flex flex-col lg:flex-row items-start gap-[40px]">
           {/* Left Section: Logo + Text */}
